@@ -1,0 +1,34 @@
+/*----------------------  2 [Base]  ----------------------
+/**
+  Base syntax should not contain any classes, id or use attribute selectors of any kind.
+  Resets or basic styles for elements belong here
+
+  Example:
+    header { ... }
+
+html
+  font-size: 100%
+body
+  background: $background
+  color: $text
+  font: 400 1rem/1.5 sans-serif
+a
+  color: $text
+  transition: 200ms ease-in-out
+  &:hover
+    color: darken($text, 10%)
+
+
+nav
+  padding: 1rem
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+  a
+    text-decoration: none
+    transition: 200ms ease-in-out
+    &:hover
+      color: darken($text, 10%)
+
+/*----------------------  End Base  ----------------------*/

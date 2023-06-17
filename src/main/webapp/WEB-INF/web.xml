@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+  <!--Home-->
+  <servlet>
+    <servlet-name>Home</servlet-name>
+    <servlet-class>io.github.manuelosorio.todowebapp.Home</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Home</servlet-name>
+    <url-pattern></url-pattern>
+  </servlet-mapping>
+  <!--Lists-->
+  <servlet>
+    <servlet-name>SingleList</servlet-name>
+    <servlet-class>io.github.manuelosorio.todowebapp.SingleList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SingleList</servlet-name>
+    <url-pattern>/list</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SingleList</servlet-name>
+    <url-pattern>/list/*</url-pattern>
+  </servlet-mapping>
+  <!--Items-->
+  <servlet>
+    <servlet-name>ItemsToggle</servlet-name>
+    <servlet-class>io.github.manuelosorio.todowebapp.ItemToggle</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ItemsToggle</servlet-name>
+    <url-pattern>/item/toggle</url-pattern>
+  </servlet-mapping>
+  <!--Error-->
+  <welcome-file-list>
+    <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
