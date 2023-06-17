@@ -13,7 +13,7 @@
 <!--Twitter Meta Content-->
 <meta name="twitter:title" content="News Homepage">
 <meta name="twitter:description" content="">
-<meta name="twittewr:image" content="">
+<meta name="twitter:image" content="">
 <meta name="twitter:site" content="@theManuelOsorio">
 <meta name="twitter:creator" content="@theManuelOsorio">
 <!--End Twitter Meta Content-->
