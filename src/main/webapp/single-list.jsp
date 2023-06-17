@@ -20,7 +20,7 @@
         <label for="<%= item.getId()%>" >
           <%= item.getName() %>
         </label>
-        <button><img src="https://good-teal-rattlesnake-cape.cyclic.app/api/icons/trash-2" alt=""></button>
+        <button><img src="https://cdn-manuelosorio.cyclic.app/api/icons/trash-2" alt=""></button>
       </li>
       <% } %>
     </ul>
