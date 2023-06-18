@@ -369,19 +369,19 @@ html {
 }
 
 body {
-  background: #091103;
-  color: #ffffff;
+  background: #f2f1f3;
+  color: #030203;
   font: 400 1rem/1.5 sans-serif;
 }
 
 a {
-  color: #ffffff;
+  color: #030203;
   -webkit-transition: 200ms ease-in-out;
   transition: 200ms ease-in-out;
 }
 
 a:hover {
-  color: #e6e5e5;
+  color: black;
 }
 
 nav {
@@ -401,7 +401,17 @@ nav a {
 }
 
 nav a:hover {
-  color: #e6e5e5;
+  color: black;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
 /*----------------------  End Base  ----------------------*/
@@ -435,6 +445,23 @@ nav a:hover {
 
   html syntax:
   <div class="module module__element--modifier"> ... </div> */
+ul:has(.todo-item) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-item {
+  background: #ffffff;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1rem;
+  margin: 1rem;
+  -webkit-box-shadow: #000000 0 0 0 1px;
+          box-shadow: #000000 0 0 0 1px;
+}
+
 /*----------------------  End Modules  ---------------------- */
 /*----------------------  5 [States]  ---------------------- */
 /*----------------------  End States  ---------------------- */

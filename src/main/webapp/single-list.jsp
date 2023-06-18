@@ -13,14 +13,16 @@
     <% TodoListEntity list = new TodoCore().getListBySlug(slug); %>
     <ul>
       <% for (io.github.manuelosorio.entities.TodoItemEntity item : list.getItems()) { %>
-      <li  >
+      <li class="todo-item">
         <input type="checkbox"
             <% if (item.isDone()) { %> checked <% } %> id="<%= item.getId()%>"
         />
         <label for="<%= item.getId()%>" >
           <%= item.getName() %>
         </label>
-        <button><img src="https://cdn-manuelosorio.cyclic.app/api/icons/trash-2" alt=""></button>
+        <button>
+          <img src="https://cdn-manuelosorio.cyclic.app/api/icons/trash-2?color=red&size=24" alt="">
+        </button>
       </li>
       <% } %>
     </ul>
