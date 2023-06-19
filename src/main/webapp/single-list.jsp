@@ -18,7 +18,7 @@
             <% if (item.isDone()) { %> checked <% } %> id="<%= item.getId()%>"
         />
         <label for="<%= item.getId()%>" >
-          <span>&nbsp;</span>
+          <span></span>
           <%= item.getName() %>
         </label>
         <button class="button button--delete">
@@ -105,7 +105,7 @@
             li.innerHTML = "" +
                 "<input type='checkbox' id='" + id + "' />" +
                 "<label for='" + id + "'>" +
-                  "<span>&nbsp;</span>" +
+                  "<span></span>" +
                   name +
                 "</label>" +
                 "<button class='button button--delete'>" +

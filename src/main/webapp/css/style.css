@@ -509,7 +509,6 @@ form {
 }
 
 .todo-item [type="checkbox"] + label span {
-  content: "";
   display: inline-block;
   height: 24px;
   width: 24px;
@@ -524,7 +523,6 @@ form {
 }
 
 .todo-item [type="checkbox"]:checked + label span {
-  content: "";
   background-image: url("https://cdn-manuelosorio.cyclic.app/api/icons/check-circle");
 }
 
