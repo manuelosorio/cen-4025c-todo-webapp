@@ -101,7 +101,6 @@
             const { id, name } = data;
             const li = document.createElement("li");
             li.classList.add("todo-item");
-            // make the inner html without template literals
             li.innerHTML = "" +
                 "<input type='checkbox' id='" + id + "' />" +
                 "<label for='" + id + "'>" +
