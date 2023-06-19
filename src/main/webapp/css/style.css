@@ -369,13 +369,14 @@ html {
 }
 
 body {
-  background: #f2f1f3;
-  color: #030203;
+  background: #eff6ef;
+  color: #040604;
   font: 400 1rem/1.5 sans-serif;
+  margin: 1rem 1.75rem;
 }
 
 a {
-  color: #030203;
+  color: #040604;
   -webkit-transition: 200ms ease-in-out;
   transition: 200ms ease-in-out;
 }
@@ -404,7 +405,7 @@ nav a:hover {
   color: black;
 }
 
-button {
+button, input, select, textarea {
   margin: 0;
   padding: 0;
   border: 0;
@@ -412,6 +413,26 @@ button {
   font: inherit;
   color: inherit;
   cursor: pointer;
+}
+
+input {
+  border: 1px solid #447074;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /*----------------------  End Base  ----------------------*/
@@ -445,21 +466,122 @@ button {
 
   html syntax:
   <div class="module module__element--modifier"> ... </div> */
+.todo-item {
+  background: #e5eff0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1rem;
+  margin: 1rem;
+  -webkit-box-shadow: #447074 0 0 0 1px;
+          box-shadow: #447074 0 0 0 1px;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo-item label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.2rem;
+  margin-right: 1.75rem;
+}
+
+.todo-item [type="checkbox"] {
+  display: none;
+}
+
+.todo-item [type="checkbox"] + label span {
+  content: "";
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  background-image: url("https://cdn-manuelosorio.cyclic.app/api/icons/circle");
+  background-repeat: no-repeat;
+  margin-right: 0.5rem;
+}
+
+.todo-item [type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: black;
+}
+
+.todo-item [type="checkbox"]:checked + label span {
+  content: "";
+  background-image: url("https://cdn-manuelosorio.cyclic.app/api/icons/check-circle");
+}
+
+.todo-item__container {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 ul:has(.todo-item) {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.todo-item {
-  background: #ffffff;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 1rem;
-  margin: 1rem;
-  -webkit-box-shadow: #000000 0 0 0 1px;
-          box-shadow: #000000 0 0 0 1px;
+.button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: .75rem 1.25rem;
+  border-radius: 0.5rem;
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  background: var(--button-bg);
+}
+
+.button:hover {
+  -webkit-transform: translateY(-0.25rem);
+          transform: translateY(-0.25rem);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  background: var(--button-hover-bg);
+}
+
+.button--primary {
+  --button-bg: #72ac93;
+  color: #eff6ef;
+}
+
+.button--primary:hover {
+  --button-hover-bg: #57947a;
+}
+
+.button--delete {
+  --button-bg: #a60021;
+  color: #eff6ef;
+  padding: .5rem .75rem;
+}
+
+.button--delete:hover {
+  --button-hover-bg: #730017;
 }
 
 /*----------------------  End Modules  ---------------------- */

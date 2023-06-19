@@ -1,10 +1,42 @@
-ul:has(.todo-item)
-  list-style: none
-  margin: 0
-  padding: 0
 .todo-item
   background: $secondary-button
   width: fit-content
   padding: 1rem
   margin: 1rem
   box-shadow: $accent 0 0 0 1px
+  transform: translateY(0)
+  transition: 200ms ease-in-out
+  display: flex
+  justify-content: space-between
+  align-items: center
+  label
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 1.2rem
+    margin-right: 1.75rem
+  [type="checkbox"]
+    display: none
+    + label span
+      content: ""
+      display: inline-block
+      height: 24px
+      width: 24px
+      background-image: url("https://cdn-manuelosorio.cyclic.app/api/icons/circle")
+      background-repeat: no-repeat
+      margin-right: 0.5rem
+      //background: $background
+    &:checked + label
+      text-decoration: line-through
+      color: darken($text, 10%)
+      span
+        content: ""
+        background-image: url("https://cdn-manuelosorio.cyclic.app/api/icons/check-circle")
+  &__container
+    list-style: none
+    margin: 0
+    padding: 0
+ul:has(.todo-item)
+  list-style: none
+  margin: 0
+  padding: 0

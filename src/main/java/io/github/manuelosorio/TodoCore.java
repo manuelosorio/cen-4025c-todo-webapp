@@ -224,4 +224,25 @@ public class TodoCore {
         this.transaction.commit();
         this.entityManager.clear();
     }
+
+    public void deleteItem(int id) {
+        TodoItemEntity item = entityManager.find(TodoItemEntity.class, id);
+        this.transaction.begin();
+        this.entityManager.remove(item);
+        this.transaction.commit();
+        this.entityManager.clear();
+    }
+
+    public TodoItemEntity addItem(String name, int i) {
+        TodoListEntity list = entityManager.find(TodoListEntity.class, i);
+        TodoItemEntity item = new TodoItemEntity(name);
+        item.setListId(list.getId());
+        item.setTodoList(list);
+        list.addItem(item);
+        this.transaction.begin();
+        this.entityManager.persist(item);
+        this.transaction.commit();
+        this.entityManager.clear();
+        return item;
+    }
 }

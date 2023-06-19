@@ -27,12 +27,20 @@
   </servlet-mapping>
   <!--Items-->
   <servlet>
-    <servlet-name>ItemsToggle</servlet-name>
-    <servlet-class>io.github.manuelosorio.todowebapp.ItemToggle</servlet-class>
+    <servlet-name>ItemsController</servlet-name>
+    <servlet-class>io.github.manuelosorio.todowebapp.ItemsController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ItemsToggle</servlet-name>
+    <servlet-name>ItemsController</servlet-name>
     <url-pattern>/item/toggle</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ItemsController</servlet-name>
+    <url-pattern>/item/delete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ItemsController</servlet-name>
+    <url-pattern>/item/add</url-pattern>
   </servlet-mapping>
   <!--Error-->
   <welcome-file-list>

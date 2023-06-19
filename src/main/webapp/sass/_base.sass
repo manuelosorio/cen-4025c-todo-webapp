@@ -12,12 +12,12 @@ body
   background: $background
   color: $text
   font: 400 1rem/1.5 sans-serif
+  margin: 1rem 1.75rem
 a
   color: $text
   transition: 200ms ease-in-out
   &:hover
     color: darken($text, 10%)
-
 
 nav
   padding: 1rem
@@ -31,7 +31,7 @@ nav
     &:hover
       color: darken($text, 10%)
 
-button
+button, input, select, textarea
   margin: 0
   padding: 0
   border: 0
@@ -40,4 +40,15 @@ button
   color: inherit
   cursor: pointer
 
+input
+  border: 1px solid $accent
+  border-radius: 0.5rem
+  padding: 0.5rem 1rem
+  margin-right: 1rem
+
+form
+  display: flex
+  flex-direction: row
+  //justify-content: center
+  align-items: center
 /*----------------------  End Base  ----------------------*/

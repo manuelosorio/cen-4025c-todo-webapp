@@ -1,0 +1,24 @@
+.button
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  padding: .75rem 1.25rem
+  border-radius: 0.5rem
+  transition: 200ms ease-in-out
+  background: var(--button-bg)
+  &:hover
+    transform: translateY(-0.25rem)
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2)
+    background: var(--button-hover-bg)
+  &--primary
+    --button-bg: #{ $primary-button }
+    color: #{ $background }
+    &:hover
+      // accent red
+      --button-hover-bg: #{darken($primary-button, 10%) }
+  &--delete
+    --button-bg: #{ $red }
+    color: #{ $background }
+    padding: .5rem .75rem
+    &:hover
+      --button-hover-bg: #{darken($red, 10%)}
