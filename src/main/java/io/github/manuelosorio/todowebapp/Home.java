@@ -6,7 +6,6 @@ import io.github.manuelosorio.TodoCore;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
 public class Home extends HttpServlet {
     private String title;
