@@ -5,14 +5,11 @@ import io.github.manuelosorio.entities.TodoListEntity;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.UUID;
 
 public class TodoCore {
     private final EntityManager entityManager;
     private final EntityTransaction transaction;
-
-//    public static void main(String[] args) {
-//        new TodoCore();
-//    }
 
     public TodoCore() {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
@@ -25,11 +22,7 @@ public class TodoCore {
 //        try (Scanner scanner = new Scanner(System.in).useDelimiter("\n")) {
 //            while (true) {
 //                System.out.println("Please select an option from the menu below");
-//                System.out.println("1. Create a new list");
-//                System.out.println("2. View a list");
 //                System.out.println("3. Delete a list");
-//                System.out.println("4. Add an item to a list");
-//                System.out.println("5. Delete an item from a list");
 //                System.out.println("6. Toggle an item on a list");
 //                System.out.println("7. Exit the application");
 //
@@ -208,7 +201,19 @@ public class TodoCore {
         TypedQuery<TodoListEntity> query = entityManager.createQuery(
                 "SELECT l FROM TodoListEntity l WHERE l.slug = :listSlug", TodoListEntity.class);
         query.setParameter("listSlug", slug);
-        return query.getSingleResult();
+        try {
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public TodoListEntity getListById(int id) {
+        try {
+            return entityManager.find(TodoListEntity.class, id);
+        } catch (NoResultException e) {
+            return null;
+        }
     }
     public List<TodoListEntity> getAllLists() {
         TypedQuery<TodoListEntity> query = entityManager.createQuery(
@@ -244,5 +249,38 @@ public class TodoCore {
         this.transaction.commit();
         this.entityManager.clear();
         return item;
+    }
+
+    public void deleteList(TodoListEntity list) {
+        this.transaction.begin();
+        this.entityManager.remove(list);
+        this.transaction.commit();
+        this.entityManager.clear();
+    }
+
+    public TodoListEntity createList(String name) {
+        String slug = slugify(name);
+
+        TodoListEntity existingList = this.getListBySlug(slug);
+        if (existingList != null) {
+            slug = slug + "-" + UUID.randomUUID().toString().substring(0,5);
+        }
+
+        this.transaction.begin();
+        TodoListEntity list = new TodoListEntity(name);
+        list.setSlug(slug);
+        this.entityManager.persist(list);
+        this.transaction.commit();
+        this.entityManager.clear();
+        return list;
+    }
+
+    private String slugify(String str) {
+        String slug = str.toLowerCase()
+                .trim()
+                .replaceAll("[^\\w\\s-]", "")
+                .replaceAll("[\\s_-]+", "-")
+                .replaceAll("^-+|-+$", "");
+        return slug;
     }
 }

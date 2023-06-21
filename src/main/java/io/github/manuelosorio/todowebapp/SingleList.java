@@ -41,8 +41,6 @@ public class SingleList extends HttpServlet {
                 return;
             }
         }
-
-        // If the list is not found or the path is not valid, forward to the 404 page
         dispatcher = req.getRequestDispatcher("/404.jsp");
         dispatcher.forward(req, res);
     }

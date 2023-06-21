@@ -42,6 +42,20 @@
     <servlet-name>ItemsController</servlet-name>
     <url-pattern>/item/add</url-pattern>
   </servlet-mapping>
+  <!--Lists-->
+  <servlet>
+    <servlet-name>ListsController</servlet-name>
+    <servlet-class>io.github.manuelosorio.todowebapp.ListsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListsController</servlet-name>
+    <url-pattern>/list/delete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListsController</servlet-name>
+    <url-pattern>/list/create</url-pattern>
+  </servlet-mapping>
+
   <!--Error-->
   <welcome-file-list>
     <welcome-file>home.jsp</welcome-file>

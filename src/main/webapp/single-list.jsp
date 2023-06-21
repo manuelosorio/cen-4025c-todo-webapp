@@ -7,10 +7,14 @@
     <%@ include file="includes/head.jsp" %>
   </head>
   <body>
-    <%@ include file="includes/nav.jsp" %>
-    <h1>${title}</h1>
     <% String slug = request.getAttribute("slug").toString(); %>
     <% TodoListEntity list = new TodoCore().getListBySlug(slug); %>
+    <%@ include file="includes/nav.jsp" %>
+    <h1>${title}</h1>
+    <button class="button button--delete" data-type="list" data-listId=<%= list.getId() %>  >
+      <img src="https://cdn-manuelosorio.cyclic.app/api/icons/trash-2?color=%23E5EFF0&size=1rem" alt="">
+      &nbsp; Delete List
+    </button>
     <ul class="todo-item__container">
       <% for (io.github.manuelosorio.entities.TodoItemEntity item : list.getItems()) { %>
       <li class="todo-item">
@@ -21,7 +25,7 @@
           <span></span>
           <%= item.getName() %>
         </label>
-        <button class="button button--delete">
+        <button class="button button--delete" data-type="item" data-itemId=<%=item.getId() %>>
           <img src="https://cdn-manuelosorio.cyclic.app/api/icons/trash-2?color=%23E5EFF0&size=1rem" alt="">
         </button>
       </li>
@@ -50,20 +54,44 @@
       });
     }
     // Delete Item
-    const deleteItem = (e) => {
-        list = e.target.parentNode.parentNode;
-        const id = list.children[0].id;
+    function deleteItem (e)  {
+        //item dataset
+        const item = this.parentNode;
+        const id = item.children[0].id;
         fetch("/item/delete?id=" + id, {
             method: "DELETE",
         }).then(() => {
-            list.remove();
+            item.remove();
         })
             .catch(err => {
                 console.error(err);
-            });
+        });
     };
+
+    // Delete List
+    const deleteList = (e) => {
+        const id = e.target.dataset.listid;
+        fetch("/list/delete?id=" + id, {
+            method: "DELETE",
+        }).then((resposne) => {
+            if (resposne.status !== 400 || resposne.status !== 500 || resposne.status !== 405) {
+                window.location.href = resposne.url;
+            }
+            console.log(resposne)
+        })
+        .catch(err => {
+            console.error(err);
+        });
+    };
+
     for (const button of deleteButtons) {
-      button.addEventListener("click", deleteItem);
+      if (button.dataset.type === "item") {
+          button.addEventListener("click", deleteItem);
+      } else if (button.dataset.type === "list") {
+          button.addEventListener("click", deleteList);
+      } else {
+          console.error("Invalid button type");
+      }
     }
 
     // Add Item
@@ -92,7 +120,8 @@
             },
             body: formBody,
         }).then(response => {
-            if (response.ok) {
+            if (response.ok || response.status === 201 || response.status === 200) {
+                form.reset();
                 return response.json();
             } else {
                 throw new Error('Error: ' + response.status);
@@ -111,6 +140,8 @@
                   "<img src='https://cdn-manuelosorio.cyclic.app/api/icons/trash-2?color=%23E5EFF0&size=1rem' alt=''>" +
                 "</button>";
             const button = li.querySelector(".button--delete");
+            button.dataset.type = "item";
+            button.dataset.itemid = id;
             button.addEventListener("click", deleteItem);
             ul.appendChild(li);
       })

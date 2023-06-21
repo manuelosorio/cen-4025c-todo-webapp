@@ -435,6 +435,16 @@ form {
           align-items: center;
 }
 
+ul.list__container {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.list__container li {
+  margin: 1.5rem 0;
+}
+
 /*----------------------  End Base  ----------------------*/
 /*----------------------  3 [Layout]  ---------------------- */
 /**
