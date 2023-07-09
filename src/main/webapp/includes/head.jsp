@@ -20,3 +20,4 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+<base href="http://localhost:8080/${pageContext.request.contextPath}">
