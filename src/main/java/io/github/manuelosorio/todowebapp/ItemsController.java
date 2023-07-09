@@ -17,7 +17,7 @@ public class ItemsController extends HttpServlet {
 
     @Override
     public void doPut(HttpServletRequest req, HttpServletResponse res) {
-        String route = req.getRequestURI();
+        String route = req.getRequestURI().substring(req.getContextPath().length());
         if (route.equals(toggleRoute)) {
             int id = req.getParameter("id") != null ? Integer.parseInt(req.getParameter("id")) : -1;
             if (id == -1) {
@@ -39,7 +39,7 @@ public class ItemsController extends HttpServlet {
 
     @Override
     public void doDelete(HttpServletRequest req, HttpServletResponse res) {
-        String route = req.getRequestURI();
+        String route = req.getRequestURI().substring(req.getContextPath().length());
         if (route.equals(deleteRoute)) {
             int id = req.getParameter("id") != null
                     ? Integer.parseInt(req.getParameter("id")) : -1;
@@ -62,7 +62,7 @@ public class ItemsController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) {
-        String route = req.getRequestURI();
+        String route = req.getRequestURI().substring(req.getContextPath().length());
         if (route.equals(postRoute)) {
 
             // request body
@@ -72,7 +72,6 @@ public class ItemsController extends HttpServlet {
                 res.setStatus(400);
                 return;
             }
-
             try {
                 TodoCore core = new TodoCore();
                 TodoItemEntity item = core.addItem(name, Integer.parseInt(listId));

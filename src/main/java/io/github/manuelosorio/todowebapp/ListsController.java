@@ -17,7 +17,7 @@ public class ListsController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        String route = req.getRequestURI();
+        String route = req.getRequestURI().substring(req.getContextPath().length());
         TodoCore core = new TodoCore();
         if (route.equals(createRoute)) {
             String name = req.getParameter("name");
@@ -42,7 +42,7 @@ public class ListsController extends HttpServlet {
 
     @Override
     public void doDelete(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        String route = req.getRequestURI();
+        String route = req.getRequestURI().substring(req.getContextPath().length());
         TodoCore core = new TodoCore();
         if (route.equals(deleteRoute)) {
             int id = req.getParameter("id") != null
