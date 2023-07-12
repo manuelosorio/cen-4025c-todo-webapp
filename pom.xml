@@ -6,7 +6,7 @@
 
   <groupId>io.github.manuelosorio</groupId>
   <artifactId>TodoWebApp</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.3-SNAPSHOT</version>
   <name>TodoWebApp</name>
   <packaging>war</packaging>
 
