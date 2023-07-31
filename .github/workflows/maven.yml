@@ -16,9 +16,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -31,6 +29,11 @@ jobs:
       run: mvn -B package compile --file pom.xml
     - run: mkdir artificats && cp target/*.war artificats
     - uses: actions/upload-artifact@v3
+      with:
+        name: Package
+        path: artificats
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v2.1.1
       with:
         name: Package
         path: artificats
