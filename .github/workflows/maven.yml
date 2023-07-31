@@ -29,7 +29,7 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package compile --file pom.xml
-    - run: mkdir artificats && cp target/*.war artificats && cp target/*.jar artificats
+    - run: mkdir artificats && cp target/*.war artificats
     - uses: actions/upload-artifact@v3
       with:
         name: Package
