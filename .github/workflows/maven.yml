@@ -35,12 +35,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for tests to succeed
+      - name: Wait for build to succeed
         uses: lewagon/wait-on-check-action@v1.3.1
         with:
           ref: ${{ github.ref }}
-          check-name: 'build'
-          wait-interval: 10
+          check-name: 'Build with Maven'
+          wait-interval: 20
       - name:   
         uses: actions/download-artifact@v2.1.1
         with:
